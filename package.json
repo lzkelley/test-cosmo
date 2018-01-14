@@ -1,9 +1,15 @@
 {
   "name": "pack-test",
-  "version": "0.1",
+  "version": "0.1.0",
   "main": "./app/main.js",
   "author": "Luke Zoltan Kelley <lkelley@cfa.harvard.edu>",
   "description": "A simple cosmological calculator application using Electron.",
+  "scripts": {
+    "_postinstall": "electron-builder install-app-deps",
+    "start": "./node_modules/.bin/electron src/main.js",
+    "_pack": "build --dir",
+    "_dist": "build"
+  },
   "dependencies": {
     "electron": "^1.7.10",
     "zeromq": "^4.6.0"
