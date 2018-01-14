@@ -1,0 +1,11 @@
+{
+  "name": "pack-test",
+  "version": "0.1",
+  "main": "./app/main.js",
+  "author": "Luke Zoltan Kelley <lkelley@cfa.harvard.edu>",
+  "description": "A simple cosmological calculator application using Electron.",
+  "dependencies": {
+    "electron": "^1.7.10",
+    "zeromq": "^4.6.0"
+  }
+}
