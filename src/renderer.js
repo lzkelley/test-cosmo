@@ -2,19 +2,33 @@
 /* == Initialize Python Interface == */
 
 const JSClient = require("./rpc_zmq/client.js");
-console.log("Initializing JSClient");
-let client = new JSClient();
 
-console.log("Running JSClient");
-client.run();
+var client;
 
-client.call("echo", "ready", (res) => {
-    if (res !== 'ready') {
-        console.error("Failed to connect to python process in `renderer.js`!");
-    } else {
-        console.log("server is ready");
-    }
-});
+function onTimeout() {
+    console.log("`renderer.onTimeout()`");
+    client = initClient();
+}
+
+function initClient() {
+    console.log("Initializing JSClient");
+    let _client = new JSClient();
+    _client.timeoutFunc = onTimeout;
+
+    console.log("Running JSClient");
+    _client.run();
+
+    _client.call("echo", "ready", (res) => {
+        if (res !== 'ready') {
+            console.error("Failed to connect to python process in `renderer.js`!");
+        } else {
+            console.log("server is ready");
+        }
+    });
+    return _client;
+}
+
+client = initClient();
 
 // Load DOM objects from document
 let response = document.querySelector('#response');
