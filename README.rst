@@ -5,3 +5,8 @@ Test Cosmo
 
     $ cd src
     $ git clone github.com/lzkelley/rpc_zmq
+
+-   The NPM modules must be installed before usage:
+
+    $ cd test-cosmo
+    $ npm install .
