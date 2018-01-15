@@ -11,27 +11,28 @@ var win;
 var pyProc = null;
 var pyPath = null;
 
-// const fixPath = require('fix-path');
-// console.log("path before = ", process.env.PATH);
-// fixPath();
-// console.log("path after = ", process.env.PATH);
+const fixPath = require('fix-path');
+console.log("path before = ", process.env.PATH);
+fixPath();
+console.log("path after = ", process.env.PATH);
 
 function initPython() {
 
     const pathPyAPI = () => {
-        pyPath = path.join(__dirname, 'pyapi.py');
+        // pyPath = path.join(__dirname, 'pyapi.py');
+        pyPath = path.join(__dirname, 'pyapi');
         console.log("Trying to find python at ", pyPath);
         if (fs.existsSync(pyPath)) {
             console.log("\tLocated python!");
             return pyPath;
         }
 
-        // pyPath = path.join(__dirname, '..', '..', 'external', 'pyapi.py');
-        // console.log("Trying to find python at ", pyPath);
-        // if (fs.existsSync(pyPath)) {
-        //     console.log("\tLocated python!");
-        //     return pyPath;
-        // }
+        pyPath = path.join(__dirname, '..', '..', 'pyapi');
+        console.log("Trying to find python at ", pyPath);
+        if (fs.existsSync(pyPath)) {
+            console.log("\tLocated python!");
+            return pyPath;
+        }
 
         console.log("Failed to find python!");
         throw "Failed to find python!";
@@ -40,7 +41,9 @@ function initPython() {
     const createPyProc = () => {
         let pyPath = '' + pathPyAPI();
         console.log("pyPath: '", pyPath);
-        pyProc = require('child_process').spawn('python', [pyPath]);
+        // pyProc = require('child_process').spawn('python', [pyPath]);
+        // pyProc = require('child_process').spawn(pyPath);
+        pyProc = require('child_process').execFile(pyPath);
         if (pyProc == null) {
             throw new Error("Spawning `child_process` failed!");
         }
