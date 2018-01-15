@@ -1,6 +1,6 @@
 {
   "name": "test-cosmo",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "./src/main.js",
   "author": "Luke Zoltan Kelley <lkelley@cfa.harvard.edu>",
   "description": "A simple cosmological calculator application using Electron.",
