@@ -14,3 +14,12 @@ Test Cosmo
 -   Run with:
 
     $ npm start
+
+
+Building / Distribution
+-----------------------
+-   Package python api layer using pyinstaller,
+
+    $ pyinstaller pyapi.py --distpath . -F
+    $ rm -r build/
+    $ rm pyapi.spec

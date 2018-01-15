@@ -1,17 +1,55 @@
 {
-  "name": "pack-test",
-  "version": "0.1.0",
-  "main": "./app/main.js",
+  "name": "test-cosmo",
+  "version": "0.1.2",
+  "main": "./src/main.js",
   "author": "Luke Zoltan Kelley <lkelley@cfa.harvard.edu>",
   "description": "A simple cosmological calculator application using Electron.",
   "scripts": {
-    "_postinstall": "electron-builder install-app-deps",
-    "start": "./node_modules/.bin/electron src/main.js",
-    "_pack": "build --dir",
-    "_dist": "build"
+    "postinstall": "electron-builder install-app-deps",
+    "start": "npm install && electron ./src/main.js",
+    "_start": "./node_modules/.bin/electron src/main.js",
+    "pack": "build --dir",
+    "dist": "build"
+  },
+  "build": {
+    "appId": "test-cosmo",
+    "extraResources": [
+      {
+        "from": "src/pyapi",
+        "to": "pyapi"
+      }
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "squirrel",
+      "icon": "build/icon.ico"
+    }
   },
   "dependencies": {
-    "electron": "^1.7.10",
+    "fix-path": "^2.1.0",
     "zeromq": "^4.6.0"
+  },
+  "devDependencies": {
+    "electron": "^1.7.10",
+    "electron-builder": "^19.52.1"
   }
 }
