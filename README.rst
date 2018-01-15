@@ -22,6 +22,13 @@ Building / Distribution
 
     $ pyinstaller pyapi.py --distpath . -F; rm -r build/; rm pyapi.spec
 
+-   Installed astropy with:
+
+    $ pip install git+https://github.com/astropy/astropy.git@v3.0rc1
+    
+    -   `pyinstaller` will build successfully with this, but it won't work with an error: https://github.com/astropy/astropy/issues/7052#issuecomment-356107406
+    
+    -   Also use the approach from: https://github.com/maartenbreddels/frozen_astropy/blob/8e40dd9318301d9dece9f1b438e432fb65a71e4b/frozen_astropy.py#L3-L29
 
 Resources
 ---------
