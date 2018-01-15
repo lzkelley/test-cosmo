@@ -20,9 +20,7 @@ Building / Distribution
 -----------------------
 -   Package python api layer using pyinstaller,
 
-    $ pyinstaller pyapi.py --distpath . -F
-    $ rm -r build/
-    $ rm pyapi.spec
+    $ pyinstaller pyapi.py --distpath . -F; rm -r build/; rm pyapi.spec
 
 
 Resources
