@@ -23,3 +23,11 @@ Building / Distribution
     $ pyinstaller pyapi.py --distpath . -F
     $ rm -r build/
     $ rm pyapi.spec
+
+
+Resources
+---------
+-   https://github.com/fyears/electron-python-example
+-   https://medium.com/how-to-electron/a-complete-guide-to-packaging-your-electron-app-1bdc717d739f
+-   https://www.electron.build/configuration/configuration
+-   https://www.npmjs.com/package/fix-path
