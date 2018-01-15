@@ -12,7 +12,8 @@ class Receiver(PyServer):
 
     def __init__(self, *args, **kwargs):
         print("Initializing Receiver")
-        super().__init__(*args, file=open('log.txt', 'w'), **kwargs)
+        # super().__init__(*args, file=open('log.txt', 'w'), **kwargs)
+        super().__init__(*args, **kwargs)
         return
 
     def datetime(self, args):
